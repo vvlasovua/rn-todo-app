@@ -8,7 +8,7 @@ const TodoList = ({todo, onRemove, setIdTodo}) => {
     }
 
     return(
-        <TouchableOpacity activeOpacity={0.5} onLongPress={delTodoHandler} onPress={setIdTodo}>
+        <TouchableOpacity activeOpacity={0.5} onLongPress={delTodoHandler} onPress={() => setIdTodo(todo.id)}>
             <View style={style.todo}>
                 <Text>{todo.title}</Text>
             </View>
