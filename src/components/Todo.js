@@ -1,14 +1,14 @@
 import React from "react";
 import {View, Text, StyleSheet, TouchableOpacity} from "react-native";
 
-const TodoList = ({todo, onRemove}) => {
+const TodoList = ({todo, onRemove, setIdTodo}) => {
 
     const delTodoHandler = () => {
         onRemove(todo.id)
     }
 
     return(
-        <TouchableOpacity activeOpacity={0.5} onLongPress={delTodoHandler}>
+        <TouchableOpacity activeOpacity={0.5} onLongPress={delTodoHandler} onPress={setIdTodo}>
             <View style={style.todo}>
                 <Text>{todo.title}</Text>
             </View>
