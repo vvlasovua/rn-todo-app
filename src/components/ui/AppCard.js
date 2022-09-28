@@ -9,11 +9,11 @@ const style = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        shadowColor: '#000',
-        shadowRadius: 2,
-        shadowOpacity: 0.3,
-        shadowOffset: {width: 2, height: 2},
-        elevation: 8,
+        shadowColor: '#000', //for iOs
+        shadowRadius: 2, //for iOs
+        shadowOpacity: 0.3, //for iOs
+        shadowOffset: {width: 2, height: 2}, //for iOs
+        elevation: 8, //for android
         backgroundColor: '#fff',
         borderRadius: 10,
     }
