@@ -51,8 +51,6 @@ export default function App() {
             ],
             {cancelable: false}
         );
-
-
     }
 
     let content = <MainScreen todos={todos} addTodo={addTodo} removeTodo={removeTodo} setIdTodo={setIdTodo}/>
