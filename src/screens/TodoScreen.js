@@ -4,8 +4,13 @@ import {THEME} from "../layout/theme";
 import AppCard from "../components/ui/AppCard";
 import EditModal from "../components/ui/Modal";
 
-const TodoScreen = ({goBack, todo, removeTodo}) => {
+const TodoScreen = ({goBack, todo, removeTodo, onSave}) => {
     const [modalVisible, setModalVisible] = useState(false);
+
+    const saveHandler = (title) => {
+        onSave(todo.id, title);
+        setModalVisible(false);
+    }
 
     return(
         <View>
@@ -22,7 +27,14 @@ const TodoScreen = ({goBack, todo, removeTodo}) => {
                 </View>
             </View>
 
-            {modalVisible && <EditModal visible={modalVisible} setModalVisible={() => {setModalVisible(false)}}/>}
+            {modalVisible &&
+                <EditModal
+                    value={todo.title}
+                    visible={modalVisible}
+                    setModalVisible={() => {setModalVisible(false)}}
+                    onSave={saveHandler}
+                />
+            }
         </View>
     )
 }

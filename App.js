@@ -53,10 +53,24 @@ export default function App() {
         );
     }
 
+    const updateTodo = (id, title) => {
+        setTodos(prev => prev.map(item => {
+            if(item.id === id) {
+                item.title = title;
+            }
+            return item;
+        }));
+    }
+
     let content = <MainScreen todos={todos} addTodo={addTodo} removeTodo={removeTodo} setIdTodo={setIdTodo}/>
     if (idTodo) {
         const selectedTodo = todos.find(item => item.id === idTodo);
-        content = <TodoScreen goBack={() => setIdTodo(null)} todo={selectedTodo} removeTodo={removeTodo}/>
+        content = <TodoScreen
+            goBack={() => setIdTodo(null)}
+            todo={selectedTodo}
+            removeTodo={removeTodo}
+            onSave={updateTodo}
+        />
     }
 
     useEffect(() => {

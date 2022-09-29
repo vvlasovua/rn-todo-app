@@ -1,8 +1,19 @@
-import React from "react";
+import React, {useState} from "react";
 import {Modal, View, StyleSheet, Button, TextInput, Alert} from "react-native";
 import {THEME} from "../../layout/theme";
 
-const EditModal = ({visible, setModalVisible}) => {
+const EditModal = ({value, visible, setModalVisible, onSave}) => {
+
+    const [title, setTitle] = useState(value);
+
+    const saveHandler = () => {
+        let newTitle = title.trim();
+        if(newTitle.length < 3) {
+            Alert.alert(`Error min lenght simbol 3, now ${newTitle.length} simbols`);
+        }else{
+            onSave(newTitle);
+        }
+    }
 
     return (
         <Modal
@@ -16,6 +27,8 @@ const EditModal = ({visible, setModalVisible}) => {
         >
             <View style={style.wrap}>
                 <TextInput
+                    value={title}
+                    onChangeText={setTitle}
                     style={style.input}
                     placeholder="enter text"
                     autoCapitalize="none"
@@ -27,7 +40,7 @@ const EditModal = ({visible, setModalVisible}) => {
                         <Button title="Cancel" onPress={setModalVisible} color={THEME.DANGER_COLOR} />
                     </View>
                     <View >
-                        <Button title="Save"/>
+                        <Button title="Save" onPress={saveHandler}/>
                     </View>
                 </View>
             </View>
