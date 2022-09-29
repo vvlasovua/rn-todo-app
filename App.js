@@ -1,8 +1,16 @@
 import React, {useEffect, useState} from "react";
 import {StyleSheet, View, Alert} from 'react-native';
-import Navbar from "./src/layout/NavBar"
+import * as Font from 'expo-font'
+import Navbar from "./src/layout/NavBar";
 import MainScreen from "./src/screens/MainScreen";
 import TodoScreen from "./src/screens/TodoScreen";
+
+async function loadApp() {
+    await Font.loadAsync({
+        'roboto-regular': require('./assets/fonts/Roboto-Regular.ttf'),
+        'roboto-bold': require('./assets/fonts/Roboto-Bold.ttf'),
+    })
+}
 
 export default function App() {
     const [idTodo, setIdTodo] = useState(null);
