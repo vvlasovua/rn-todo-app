@@ -1,8 +1,11 @@
 import React, {useState} from "react"
-import {View, StyleSheet, Text, Button} from "react-native"
+import {View, StyleSheet} from "react-native"
 import {THEME} from "../layout/theme";
 import AppCard from "../components/ui/AppCard";
 import EditModal from "../components/ui/Modal";
+import AppTextBold from "../components/ui/AppTextBold";
+import AppButton from "../components/ui/AppButton"
+import {FontAwesome, AntDesign} from "@expo/vector-icons"
 
 const TodoScreen = ({goBack, todo, removeTodo, onSave}) => {
     const [modalVisible, setModalVisible] = useState(false);
@@ -15,15 +18,24 @@ const TodoScreen = ({goBack, todo, removeTodo, onSave}) => {
     return(
         <View>
             <AppCard style={style.card}>
-                <Text style={style.title}>{todo.title}</Text>
-                <Button title='edit' onPress={() => setModalVisible(true)}/>
+                <AppTextBold style={style.title}>{todo.title}</AppTextBold>
+                <AppButton onPress={() => setModalVisible(true)}>
+                    <FontAwesome name="edit" size={20}/>
+                </AppButton>
+                {/*<Button title='edit' onPress={() => setModalVisible(true)}/>*/}
             </AppCard>
             <View style={style.buttons}>
                 <View style={style.button}>
-                    <Button title="Go Back" color={THEME.GREY_COLOR} onPress={goBack}/>
+                    <AppButton color={THEME.GREY_COLOR} onPress={goBack}>
+                        <AntDesign name="back" size={20} color="#fff"/>
+                    </AppButton>
+                    {/*<Button title="Go Back" color={THEME.GREY_COLOR} onPress={goBack}/>*/}
                 </View>
                 <View style={style.button}>
-                    <Button title="Delete" color={THEME.DANGER_COLOR} onPress={()=> removeTodo(todo.id)}/>
+                    <AppButton color={THEME.DANGER_COLOR} onPress={()=> removeTodo(todo.id)}>
+                        <AntDesign name="delete" size={20} color="#fff"/>
+                    </AppButton>
+                    {/*<Button title="Delete" color={THEME.DANGER_COLOR} onPress={()=> removeTodo(todo.id)}/>*/}
                 </View>
             </View>
 

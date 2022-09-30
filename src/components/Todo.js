@@ -1,5 +1,6 @@
 import React from "react";
-import {View, Text, StyleSheet, TouchableOpacity} from "react-native";
+import {View, StyleSheet, TouchableOpacity} from "react-native";
+import AppText from "../components/ui/AppText"
 
 const TodoList = ({todo, onRemove, setIdTodo}) => {
 
@@ -9,14 +10,14 @@ const TodoList = ({todo, onRemove, setIdTodo}) => {
 
     return(
         <TouchableOpacity activeOpacity={0.5} onLongPress={delTodoHandler} onPress={() => setIdTodo(todo.id)}>
-            <View style={style.todo}>
-                <Text>{todo.title}</Text>
+            <View style={styles.todo}>
+                <AppText>{todo.title}</AppText>
             </View>
         </TouchableOpacity>
     )
 }
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
     todo: {
         flexDirection: 'row',
         alignItems: 'center',
@@ -25,7 +26,7 @@ const style = StyleSheet.create({
         borderColor: '#eee',
         borderRadius: 5,
         marginBottom: 5,
-    }
+    },
 })
 
 export default TodoList;

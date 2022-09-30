@@ -1,6 +1,8 @@
 import React, {useState} from "react";
 import {Modal, View, StyleSheet, Button, TextInput, Alert} from "react-native";
 import {THEME} from "../../layout/theme";
+import AppButton from "./AppButton"
+import {FontAwesome, AntDesign} from "@expo/vector-icons"
 
 const EditModal = ({value, visible, setModalVisible, onSave}) => {
 
@@ -37,10 +39,16 @@ const EditModal = ({value, visible, setModalVisible, onSave}) => {
                 />
                 <View style={style.buttons}>
                     <View >
-                        <Button title="Cancel" onPress={setModalVisible} color={THEME.DANGER_COLOR} />
+                        <AppButton color={THEME.DANGER_COLOR} onPress={setModalVisible}>
+                            Cancel
+                        </AppButton>
+                        {/*<Button title="Cancel" onPress={setModalVisible} color={THEME.DANGER_COLOR} />*/}
                     </View>
                     <View >
-                        <Button title="Save" onPress={saveHandler}/>
+                        <AppButton onPress={saveHandler}>
+                            Save
+                        </AppButton>
+                        {/*<Button title="Save" onPress={saveHandler}/>*/}
                     </View>
                 </View>
             </View>

@@ -1,23 +1,33 @@
-import React, {useEffect, useState} from "react";
-import {StyleSheet, View, Alert} from 'react-native';
-import * as Font from 'expo-font'
+import React, {useState, useCallback} from "react";
+import {Alert, StyleSheet, View} from 'react-native';
+import {useFonts} from 'expo-font'
 import Navbar from "./src/layout/NavBar";
 import MainScreen from "./src/screens/MainScreen";
 import TodoScreen from "./src/screens/TodoScreen";
+//import * as SplashScreen from 'expo-splash-screen';
 
-async function loadApp() {
-    await Font.loadAsync({
-        'roboto-regular': require('./assets/fonts/Roboto-Regular.ttf'),
-        'roboto-bold': require('./assets/fonts/Roboto-Bold.ttf'),
-    })
-}
+//SplashScreen.preventAutoHideAsync();
 
 export default function App() {
+    const [fontsLoaded] = useFonts({
+        'roboto-regular': require("./assets/fonts/Roboto-Regular.ttf"),
+        'roboto-bold': require("./assets/fonts/Roboto-Bold.ttf"),
+    });
+
     const [idTodo, setIdTodo] = useState(null);
     const [todos, setTodos] = useState([
-        /*{id: '1', title: 'Выучить React Native'},
-        {id: '2', title: 'Написать приложение'},*/
+        {id: '1', title: 'Выучить React Native'},
+        {id: '2', title: 'Написать приложение'},
     ]);
+
+    /*const onLayoutRootView = useCallback(async () => {
+        if (fontsLoaded) {
+            await SplashScreen.hideAsync();
+        }
+    }, [fontsLoaded]);*/
+
+    if(!fontsLoaded) return null;
+
 
     const addTodo = (title) => {
         /*const newTodo = {
@@ -81,12 +91,9 @@ export default function App() {
         />
     }
 
-    useEffect(() => {
-        console.log(todos);
-    }, [todos])
 
   return (
-    <View>
+    <View >
       <Navbar title="Todo APP" />
       <View style={styles.container}>
           {content}
@@ -97,7 +104,7 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-      paddingHorizontal: 30,
-      paddingVertical: 30,
+      paddingHorizontal: 20,
+      paddingVertical: 20,
   }
 });
