@@ -1,5 +1,5 @@
 import React, {useState} from "react"
-import {View, StyleSheet} from "react-native"
+import {View, StyleSheet, Dimensions} from "react-native"
 import {THEME} from "../layout/theme";
 import AppCard from "../components/ui/AppCard";
 import EditModal from "../components/ui/Modal";
@@ -57,7 +57,9 @@ const style = StyleSheet.create({
         justifyContent: 'space-between',
     },
     button: {
-        width: '45%'
+        //width: '45%'
+        //width: Dimensions.get('window').width / 3,
+        width: Dimensions.get('window').width > 400 ? 200 : 150,
     },
     title: {
         fontSize: 22
